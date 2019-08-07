@@ -1,0 +1,10 @@
+<div>
+  <small *ngIf="cartsummary.has_item" class="navbar-text">
+    <b>Your cart:</b>
+    {{cartsummary.total_quantity}} item(s)
+    {{cartsummary.total_price | currency:"RM"}}
+  </small>
+  <a class="btn btn-sm btn-secondary navbar-btn" routerLink="/cart">
+    <i class="fa fa-shopping-cart"></i>
+  </a>
+</div>

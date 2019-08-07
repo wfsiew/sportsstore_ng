@@ -1,3 +1,39 @@
-<div>
-  
+<h2>Your cart</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Item</th>
+      <th class="text-right">Price</th>
+      <th class="text-right">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of lines">
+      <td class="text-center">{{o.quantity}}</td>
+      <td class="text-left">{{o.product.name}}</td>
+      <td class="text-right">{{o.product.price | currency:"RM"}}</td>
+      <td class="text-right">
+        {{o.quantity * o.product.price | currency:"RM"}}
+      </td>
+      <td>
+        <form method="post" (ngSubmit)="removeFromCart(o.product)">
+          <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+        </form>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="text-right">Total:</td>
+      <td class="text-right">
+        {{total_price | currency:"RM"}}
+      </td>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="text-center">
+  <a class="btn btn-primary" href="" (click)="back()">Continue shopping</a>
+  <a class="btn btn-primary" routerLink="/checkout">Checkout</a>
 </div>

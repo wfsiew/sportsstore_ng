@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 import { MessageService } from '../../services/message.service';
 
 @Component({
@@ -18,6 +19,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private cartService: CartService,
     private messageService: MessageService,
     private route: ActivatedRoute) { }
 
@@ -44,7 +46,8 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(o) {
-    this.messageService.send('add-to-cart', o);
+    this.cartService.addItem(o, 1);
+    this.messageService.send('app-cart-summary', this.cartService.getCartSummary());
   }
 
   goto(i) {

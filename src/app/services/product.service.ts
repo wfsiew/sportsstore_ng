@@ -11,19 +11,19 @@ export class ProductService {
 
   private productUrl = SharedService.productUrl;
 
-  constructor(private httpy: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   get_productList(page: number, category: string) {
     if (Helper.isEmpty(category)) {
-      return this.httpy.get(`${this.productUrl}/${page}`);
+      return this.http.get(`${this.productUrl}/${page}`);
     }
 
     else {
-      return this.httpy.get(`${this.productUrl}/${category}/${page}`);
+      return this.http.get(`${this.productUrl}/${category}/${page}`);
     }
   }
 
   get_categoryList() {
-    return this.httpy.get(`${this.productUrl}/categories`);
+    return this.http.get(`${this.productUrl}/categories`);
   }
 }

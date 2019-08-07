@@ -16,6 +16,8 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
     ProductComponent,
     CartComponent,
     OrderComponent,
-    NavigationMenuComponent
+    NavigationMenuComponent,
+    CartSummaryComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

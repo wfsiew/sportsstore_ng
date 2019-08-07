@@ -1,4 +1,4 @@
-import _ from 'node_modules/lodash';
+import _ from 'lodash';
 
 export class Helper {
 
