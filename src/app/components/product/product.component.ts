@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-product',
@@ -17,6 +18,7 @@ export class ProductComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private messageService: MessageService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -42,7 +44,7 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart(o) {
-    
+    this.messageService.send('add-to-cart', o);
   }
 
   goto(i) {

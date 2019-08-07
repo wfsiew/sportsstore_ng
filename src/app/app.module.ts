@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 
 import { MessageService } from './services/message.service';
 import { ProductService } from './services/product.service';
+import { CartService } from './services/cart.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -34,7 +35,8 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
   ],
   providers: [
     MessageService,
-    ProductService
+    ProductService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
