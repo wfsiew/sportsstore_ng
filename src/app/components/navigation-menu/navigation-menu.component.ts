@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -14,7 +14,8 @@ export class NavigationMenuComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -26,6 +27,18 @@ export class NavigationMenuComponent implements OnInit {
     err => {
       console.log(err);
     });
+  }
+
+  home() {
+    this.category = null;
+    this.router.navigate(['/product']);
+    return false;
+  }
+
+  goto(o) {
+    this.category = o;
+    this.router.navigate(['/product', 1, o]);
+    return false;
   }
 
   isCategorySelected(o) {

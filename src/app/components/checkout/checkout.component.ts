@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
+import { MessageService } from '../../services/message.service';
+import { Helper } from 'src/app/shared/helper';
 
 @Component({
   selector: 'app-checkout',
@@ -13,6 +16,8 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
+    private messageService: MessageService,
+    private router: Router,
     private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -40,15 +45,31 @@ export class CheckoutComponent implements OnInit {
       state: fm.state,
       zip: fm.zip,
       country: fm.country,
-      giftwrap: fm.giftwrap
+      giftwrap: fm.giftwrap,
+      cartLines: this.cartService.getLines()
+    }
+
+    if (Helper.isEmpty(o.cartLines)) {
+      alert('Sorry, your cart is empty!');
+      return;
     }
 
     this.cartService.checkout(o).subscribe(res => {
-      console.log("===");
-      console.log(res);
+      this.cartService.clear();
+      this.messageService.send('app-cart-summary', this.cartService.getCartSummary());
+      this.router.navigate(['/completed']);
     },
     err => {
       console.log(err);
-    })
+    });
+  }
+
+  invalid(s: string) {
+    const m = this.mform.controls[s];
+    return m.invalid && (m.dirty || m.touched);
+  }
+
+  invalidForm() {
+    return this.mform.invalid;
   }
 }

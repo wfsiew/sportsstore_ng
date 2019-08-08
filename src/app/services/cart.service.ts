@@ -82,4 +82,9 @@ export class CartService {
   checkout(o) {
     return this.http.post(`${this.orderUrl}/checkout`, o);
   }
+
+  clear() {
+    this.lines = [];
+    this.saveCart();
+  }
 }

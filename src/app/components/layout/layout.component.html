@@ -1,0 +1,16 @@
+<div class="navbar navbar-dark bg-dark" role="navigation">
+  <div class="row">
+    <a class="col navbar-brand" href="#">MY STORE</a>
+    <div class="col-5 text-right">
+      <app-cart-summary></app-cart-summary>
+    </div>
+  </div>
+</div>
+<div class="row m-1 p-1">
+  <div id="categories" class="col-3">
+    <app-navigation-menu></app-navigation-menu>
+  </div>
+  <div class="col-9">
+    <router-outlet></router-outlet>
+  </div>
+</div>

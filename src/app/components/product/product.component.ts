@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 import { MessageService } from '../../services/message.service';
@@ -21,11 +21,13 @@ export class ProductComponent implements OnInit {
     private productService: ProductService,
     private cartService: CartService,
     private messageService: MessageService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.category = params.get('category');
+      this.page = params.get('page') == null ? 1 : Number(params.get('page'));
       this.load();
     });
   }
@@ -51,7 +53,15 @@ export class ProductComponent implements OnInit {
   }
 
   goto(i) {
-    this.page = i;
-    this.load();
+    if (!this.category) {
+      this.router.navigate(['/product', i]);
+    }
+
+    else {
+      this.router.navigate(['/product', i, this.category]);
+    }
+    return false;
+    // this.page = i;
+    // this.load();
   }
 }

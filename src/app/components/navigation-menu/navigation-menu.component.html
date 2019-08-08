@@ -1,9 +1,10 @@
-<a class="btn btn-block btn-outline-secondary" routerLink="/">
+<a class="btn btn-block btn-outline-secondary" href="#" (click)="home()">
   Home
 </a>
 <a class="btn btn-block" 
   *ngFor="let o of categorylist" 
   [ngClass]="{ 'btn-primary': isCategorySelected(o), 'btn-outline-secondary': !isCategorySelected(o) }" 
-  [routerLink]="['/', o, 1]">
+  href="#"
+  (click)="goto(o)">
   {{o}}
 </a>
