@@ -1,0 +1,31 @@
+<div class="m-1 p-1">
+  <div class="bg-info p-2">
+    <h4>Orders</h4>
+  </div>
+  <table *ngIf="list" class="table table-bordered table-striped">
+    <tr>
+      <th>Name</th>
+      <th>Zip</th>
+      <th colspan="2">Details</th>
+      <th></th>
+    </tr>
+    <ng-container *ngFor="let o of list">
+      <tr>
+        <td>{{o.name}}</td>
+        <td>{{o.zip}}</td>
+        <th>Product</th>
+        <th>Quantity</th>
+        <td>
+          <form method="post" (ngSubmit)="markShipped(o)">
+            <button type="submit" class="btn btn-sm btn-danger">Ship</button>
+          </form>
+        </td>
+      </tr>
+      <tr *ngFor="let line of o.lines">
+        <td colspan="2"></td>
+        <td>{{line.product.name}}</td>
+        <td>{{line.quantity}}</td>
+      </tr>
+    </ng-container>
+  </table>
+</div>

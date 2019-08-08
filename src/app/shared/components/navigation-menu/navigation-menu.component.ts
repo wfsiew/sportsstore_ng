@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -15,7 +15,8 @@ export class NavigationMenuComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

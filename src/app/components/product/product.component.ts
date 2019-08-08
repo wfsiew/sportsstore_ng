@@ -22,7 +22,8 @@ export class ProductComponent implements OnInit {
     private cartService: CartService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {

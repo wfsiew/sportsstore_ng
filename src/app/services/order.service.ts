@@ -14,4 +14,8 @@ export class OrderService {
   get_orderList() {
     return this.http.get(this.orderUrl);
   }
+
+  markShipped(orderID: number) {
+    return this.http.post(`${this.orderUrl}/markshipped/${orderID}`, orderID);
+  }
 }

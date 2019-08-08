@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { CompletedComponent } from './components/completed/completed.component';
+import { CheckoutComponent } from './components/order/checkout/checkout.component';
+import { CompletedComponent } from './components/order/completed/completed.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
-import { OrderComponent } from './components/order/order.component';
+import { OrderComponent } from './components/order/order/order.component';
 
 const routes: Routes = [
   {
@@ -37,8 +37,13 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'order',
-    component: OrderComponent
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'order', component: OrderComponent
+      }
+    ]
   }
 ];
 

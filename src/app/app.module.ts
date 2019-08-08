@@ -13,28 +13,28 @@ import { OrderService } from './services/order.service';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
+import { NavigationMenuComponent } from './shared/components/navigation-menu/navigation-menu.component';
+import { CartSummaryComponent } from './shared/components/cart-summary/cart-summary.component';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
-import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { CompletedComponent } from './components/completed/completed.component';
+import { CheckoutComponent } from './components/order/checkout/checkout.component';
+import { CompletedComponent } from './components/order/completed/completed.component';
 import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
-import { OrderComponent } from './components/order/order.component';
+import { OrderComponent } from './components/order/order/order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    CartComponent,
+    LayoutComponent,
     NavigationMenuComponent,
     CartSummaryComponent,
+    ProductComponent,
+    CartComponent,
     CheckoutComponent,
-    LayoutComponent,
     CompletedComponent,
     AdminLayoutComponent,
-    OrderComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

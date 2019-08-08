@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../services/order.service';
+import { OrderService } from '../../../services/order.service';
 
 @Component({
   selector: 'app-order',
@@ -26,6 +26,11 @@ export class OrderComponent implements OnInit {
   }
 
   markShipped(o) {
-    alert(o.orderID)
+    this.orderService.markShipped(o.orderID).subscribe(res => {
+      this.load();
+    },
+    err => {
+      console.log(err);
+    });
   }
 }
