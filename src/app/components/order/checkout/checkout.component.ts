@@ -37,7 +37,7 @@ export class CheckoutComponent implements OnInit {
 
   onSubmit() {
     let fm = this.mform.value;
-    let o = {
+    const o = {
       name: fm.name,
       line1: fm.line1,
       line2: fm.line2,
@@ -46,16 +46,20 @@ export class CheckoutComponent implements OnInit {
       state: fm.state,
       zip: fm.zip,
       country: fm.country,
-      giftwrap: fm.giftwrap,
-      cartLines: this.cartService.getLines()
-    }
+      giftwrap: fm.giftwrap
+    };
+    const lines = this.cartService.getLines();
+    const x = {
+      order: o,
+      lines: lines
+    };
 
-    if (Helper.isEmpty(o.cartLines)) {
+    if (Helper.isEmpty(lines)) {
       alert('Sorry, your cart is empty!');
       return;
     }
 
-    this.cartService.checkout(o).subscribe(res => {
+    this.cartService.checkout(x).subscribe(res => {
       this.cartService.clear();
       this.messageService.send('app-cart-summary', this.cartService.getCartSummary());
       this.router.navigate(['/completed']);
