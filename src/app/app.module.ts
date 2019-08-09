@@ -11,8 +11,6 @@ import { ProductService } from './services/product.service';
 import { CartService } from './services/cart.service';
 import { OrderService } from './services/order.service';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 // import { LayoutComponent } from './shared/components/layout/layout.component';
 // import { NavigationMenuComponent } from './shared/components/navigation-menu/navigation-menu.component';
 // import { CartSummaryComponent } from './shared/components/cart-summary/cart-summary.component';
@@ -41,8 +39,7 @@ import { OrderComponent } from './components/order/order/order.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    NgbModule
+    ReactiveFormsModule
   ],
   providers: [
     MessageService,
