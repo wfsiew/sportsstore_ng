@@ -28,6 +28,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       this.category = params.get('category');
+      this.messageService.send('menu-category', { category: this.category });
       this.page = params.get('page') == null ? 1 : Number(params.get('page'));
       this.load();
     });

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductService } from '../../../services/product.service';
+import { MessageService } from '../../../services/message.service';
 
 @Component({
   selector: 'app-navigation-menu',
@@ -14,14 +15,16 @@ export class NavigationMenuComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.category = params.get('category');
-    });
+    this.messageService.get().subscribe(x => {
+      if (x.name === 'menu-category') {
+        this.category = x.data.category;
+      }
+    })
     this.productService.get_categoryList().subscribe(res => {
       this.categorylist = res;
     },
